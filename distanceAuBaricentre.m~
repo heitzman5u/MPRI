@@ -1,0 +1,14 @@
+
+% Renvoie la distance d'un point limite de l'objet par rapport au
+% baricentre
+function d = distanceAuBaricentre(Img, x, y, angle)
+    trouve = false;
+    unitaireX = cos(angle);
+    unitaireY = sin(angle);
+    posX = x;
+    posY = y;
+    
+    [tailleY, tailleX] = size(Img);
+    
+    while posX 
+end
