@@ -1,9 +1,12 @@
 
-Img = logical(imread('dbq/apple-1.gif'));
+Img = logical(imread('dbq/Bone-1.gif'));
 
-V = vecteurDistanceAuBaricentre(Img, bariX, bariY, 0.1);
+angle = 0.05;
+[baryY, baryX] = barycentre(Img);
+V = vecteurDistanceAuBaricentre(Img, baryX, baryY, angle);
 
-X = [0:0.1:2*pi];
+
+X = [0:angle:2*pi];
 figure;
 imshow(Img);
 drawnow();
