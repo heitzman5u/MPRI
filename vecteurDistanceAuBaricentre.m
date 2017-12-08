@@ -2,7 +2,7 @@
 % Renvoie un vecteur de distance: celle des limites de l'objet
 function D = vecteurDistanceAuBaricentre(Img, x, y, angle)
     Pas = [0:angle:2*pi];
-    taille = size(Pas, 2)
+    taille = size(Pas, 2);
     
     D = [];
     
