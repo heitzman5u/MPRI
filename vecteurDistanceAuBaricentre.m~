@@ -1,5 +1,0 @@
-
-% Renvoie un vecteur de distance: celle des limites de l'objet
-function D = vecteurDistanceAuBaricentre(Img, x, y, angle)
-    Pas 
-end
