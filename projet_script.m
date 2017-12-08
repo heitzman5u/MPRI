@@ -6,3 +6,4 @@ drawnow();
 
 [height, width] = size(Im);
 
+[barY, barX] = barycentre(Im);
