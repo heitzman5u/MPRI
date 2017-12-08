@@ -1,14 +1,15 @@
 
 %ligne de mDescr = 1 descripteur d'une image
 
+%vReq = descripteur de l'img requete
 
 
 function res = triDistEuclidienne(vReq, mDescr)
 
-[xDescr, yDescr] = size(mDescr);
+[yDescr, xDescr] = size(mDescr);
 
 for i = 1 : yDescr
-    distEucl(i,1) = norm (vReq - mDescr(:, i));
+    distEucl(i,1) = norm (vReq - mDescr(i, :));
 end
 
 res = sort(distEucl);

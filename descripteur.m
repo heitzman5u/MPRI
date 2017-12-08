@@ -1,7 +1,7 @@
 
 function D = descripteur(Img)
     angle = 0.05;
-    nbCoeffsAGarder = 50;
+    nbCoeffsAGarder = 70;
     
     [baryY, baryX] = barycentre(Img);
     V = vecteurDistanceAuBaricentre(Img, baryX, baryY, angle);
