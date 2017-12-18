@@ -6,7 +6,7 @@
 %vLabel = vecteur des labels des images de mDescr
 
 
-function [resDescr, resLabel] = triDistEuclidienne(vReq, mDescr, vLabel)
+function [resDescr, resLabel, nomLabel] = triDistEuclidienne(vReq, mDescr, vLabel)
 
 [yDescr, xDescr] = size(mDescr);
 
@@ -18,10 +18,13 @@ resDescr = sort(distEucl);
 [resDescr, Indices] = sort(distEucl);
 
 
-%resLabel = cell(1);
-%for i = 1 : yDescr
-%    resLabel{i} = vLabel{Indices(i)};
-%end
+nomLabel = cell(1);
+for i = 1 : yDescr
+    nomLabel{i} = vLabel{Indices(i, :)};
+end
+
+
+
 resLabel = Indices;
 
 end
