@@ -16,6 +16,13 @@ end
 
 resDescr = sort(distEucl);
 [resDescr, Indices] = sort(distEucl);
-resLabel = vLabel(Indices, :);
+
+
+%resLabel = cell(1);
+%for i = 1 : yDescr
+%    resLabel{i} = vLabel{Indices(i)};
+%end
+resLabel = Indices;
 
 end
+
