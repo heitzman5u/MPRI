@@ -13,10 +13,10 @@ function d = distanceAuBaricentre(Img, x, y, angle)
     while (~ trouve)
         posX = posX + unitaireX;
         posY = posY + unitaireY;
-        if ~Img(floor(posY), floor(posX))
+        if posX <= 1 || posY <= 1 || posX >= tailleX || posY >= tailleY
             trouve = true;
         end
-        if posX > tailleX || posY > tailleY
+        if ~trouve && ~Img(floor(posY), floor(posX))
             trouve = true;
         end
     end

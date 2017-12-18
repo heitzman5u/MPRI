@@ -1,6 +1,6 @@
 
 function D = descripteur(Img)
-    angle = 0.05;
+    angle = 0.5;
     nbCoeffsAGarder = 70;
     
     [baryY, baryX] = barycentre(Img);

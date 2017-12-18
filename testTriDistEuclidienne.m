@@ -21,4 +21,5 @@ drawnow();
 %m =[A; A];
 
 [res, labels] = triDistEuclidienne(D, [A; D], ['b1'; 'b2'])
+%% 
 

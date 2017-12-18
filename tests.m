@@ -8,6 +8,10 @@ img_db_list = glob([img_db_path, '*.gif']);
 img_db = cell(1);
 label_db = cell(1);
 fd_db = cell(1);
+
+% mDescr descripteurs des images ; vReq : descripteur de l'img requête
+mDescr = [];
+
 figure();
 for im = 1:numel(img_db_list);
     img_db{im} = logical(imread(img_db_list{im}));
@@ -15,4 +19,9 @@ for im = 1:numel(img_db_list);
     clf;imshow(img_db{im});
     disp(label_db{im}); 
     drawnow();
+    mDescr = [mDescr; descripteur(img_db{im})];
 end
+
+
+
+
