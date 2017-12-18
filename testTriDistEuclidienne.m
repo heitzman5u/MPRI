@@ -18,4 +18,7 @@ figure;
 plot(A);
 drawnow();
 
-res = triDistEuclidienne(D, A)
+%m =[A; A];
+
+res = triDistEuclidienne(D, [A; A])
+%% 
