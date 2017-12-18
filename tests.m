@@ -19,7 +19,7 @@ mDescr = zeros(10, coeffs);
 
 %figure();
 %for im = 1:numel(img_db_list)
-for im = 1:25
+for im = 1:40
     img_db{im} = logical(imread(img_db_list{im}));
     label_db{im} = get_label(img_db_list{im});
     %clf;imshow(img_db{im});
@@ -32,8 +32,8 @@ end
 
 
 % travail pour une image requête
-imReq = logical(imread('./dbq/Bone-1.gif'));
-labelReq = get_label('./dbq/Bone-1.gif');
+imReq = logical(imread('./dbq/Comma-1.gif'));
+labelReq = get_label('./dbq/Comma-1.gif');
 vReq = descripteur(imReq, angle, coeffs);
 
 
