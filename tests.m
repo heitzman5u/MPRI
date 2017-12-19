@@ -2,7 +2,7 @@
 % où num_ref est le nombre d'objets de référence (le nombre d'images requêtes) 
 % et 19 est le nombre d'images à retrouver pour chaque requête
 
-%function [recall, precision] = tests()
+function [recall, precision] = tests()
 clear;
 img_db_path = './db/';
 img_db_list = glob([img_db_path, '*.gif']);
@@ -18,48 +18,59 @@ coeffs = floor((2.0*pi/angle) * 0.5);
 mDescr = zeros(10, coeffs);
 
 %figure();
-%for im = 1:numel(img_db_list)
-for im = 1:40
+for im = 1:numel(img_db_list)
+%for im = 1:25
     img_db{im} = logical(imread(img_db_list{im}));
     label_db{im} = get_label(img_db_list{im});
-    %clf;imshow(img_db{im});
+    clf;imshow(img_db{im});
     disp(label_db{im}); 
-    %drawnow();
-    
+    drawnow();
+
     mDescr(im, :) = descripteur(img_db{im}, angle, coeffs);
 end
 
+save('mDescr.mat', 'mDescr');
 
+%load('mDescr.mat');
 
 % travail pour une image requête
-imReq = logical(imread('./dbq/Comma-1.gif'));
-labelReq = get_label('./dbq/Comma-1.gif');
-vReq = descripteur(imReq, angle, coeffs);
 
+img_dbq_list = glob(['./dbq/', '*.gif']);
+recallMoyen = zeros(1, 19);
 
-[resDescr, indiceLabel, nomLabel] = triDistEuclidienne(vReq, mDescr, label_db);
+for im = 1 : numel(img_dbq_list)
+    imReq = logical(imread(img_dbq_list{im}));
+    labelReq = get_label(img_dbq_list{im});
+    vReq = descripteur(imReq, angle, coeffs);
 
+    [resDescr, indiceLabel, nomLabel] = triDistEuclidienne(vReq, mDescr, label_db);
+    recall = recall_precision(labelReq, nomLabel);
     
-recall = recall_precision(labelReq, nomLabel);
+    recallMoyen = recall_moyen(recallMoyen, recall);
 
+    figure();
+    subplot(3, 5, 1);
+    imshow(imReq);
+    title('Image requête');
 
+    subplot(3, 5, [3 : 5]);
+    plot(recall);
+    title('recall precision');
+    xlabel('ième image trouvée');
+    ylabel('% de précision');
 
-figure();
-subplot(2, 5, 1);
-imshow(imReq);
-title('Image requête');
-
-subplot(2, 5, [3 : 5]);
-plot(recall);
-title('recall precision');
-xlabel('ième image trouvée');
-ylabel('% de précision');
-
-for i = 6 : 10
-    subplot(2, 5, i);
-    imshow(img_db{indiceLabel(i-5)});
-    title(label_db{indiceLabel(i-5)});
+    for i = 6 : 10 
+        subplot(3, 5, i);
+        imshow(img_db{indiceLabel(i-5)});
+        title(label_db{indiceLabel(i-5)});
+    end
+    subplot(3, 5, [11 : 15]);
+    plot(recallMoyen / im);
+    title('recall moyen');
+    xlabel('ième image trouvée en moyenne');
+    ylabel('% de précision moyen');
+    drawnow();
+    uiwait;
 end
-drawnow();
 
 

@@ -4,9 +4,9 @@ function D = vecteurDistanceAuBaricentre(Img, x, y, angle)
     Pas = [0:angle:2*pi];
     taille = size(Pas, 2);
     
-    D = [];
+    D = zeros(1, taille);
     
     for i=1 : taille
-        D = [D, distanceAuBaricentre(Img, x, y, Pas(i))];
+        D(1, i) = distanceAuBaricentre(Img, x, y, Pas(i));
     end
 end
