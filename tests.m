@@ -11,8 +11,8 @@ label_db = cell(1);
 fd_db = cell(1);
 
 % mDescr descripteurs des images ; vReq : descripteur de l'img requête
-angle = 0.25;
-coeffs = floor((2.0*pi/angle) * 0.5);
+angle = 0.05;
+coeffs = floor((2.0*pi/angle) * 0.75);
 
 mDescr = zeros(numel(img_db_list), coeffs);
 
@@ -70,6 +70,7 @@ for im = 1 : numel(img_dbq_list)
     ylabel('% de précision moyen');
     drawnow();
     uiwait;
+    
 end
 
 
