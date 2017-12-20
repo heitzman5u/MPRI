@@ -22,6 +22,7 @@ function d = distanceAuBaricentre(Img, x, y, angle)
     end
     
     d = sqrt( (posX - x)^2 + (posY - y)^2 );
+    
 end
  
 

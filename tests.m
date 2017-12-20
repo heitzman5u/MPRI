@@ -14,12 +14,10 @@ fd_db = cell(1);
 angle = 0.25;
 coeffs = floor((2.0*pi/angle) * 0.5);
 
-%mDescr = zeros(numel(img_db_list), coeffs);
-mDescr = zeros(10, coeffs);
+mDescr = zeros(numel(img_db_list), coeffs);
 
-%figure();
+figure();
 for im = 1:numel(img_db_list)
-%for im = 1:25
     img_db{im} = logical(imread(img_db_list{im}));
     label_db{im} = get_label(img_db_list{im});
     clf;imshow(img_db{im});
@@ -29,9 +27,10 @@ for im = 1:numel(img_db_list)
     mDescr(im, :) = descripteur(img_db{im}, angle, coeffs);
 end
 
-save('mDescr.mat', 'mDescr');
+%save('mDescr.mat', 'mDescr');
 
 %load('mDescr.mat');
+%disp('fin du load');
 
 % travail pour une image requête
 
